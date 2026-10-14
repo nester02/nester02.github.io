@@ -129,25 +129,6 @@
 }
 
 @media (max-width: 700px) {
-  .hub-case__panel {
-    padding: 14px 16px 16px;
-  }
-
-  .hub-case__meta {
-    gap: 6px 12px;
-    font-size: 0.6875rem;
-    letter-spacing: 0.03em;
-  }
-
-  .hub-case__meta-item {
-    gap: 6px;
-  }
-
-  .hub-case__meta-icon {
-    width: 14px;
-    height: 14px;
-  }
-
   .hub-intro__media {
     background-image: url('data:image/webp;base64,UklGRmgAAABXRUJQVlA4IFwAAAAQBACdASoQABQAPu1kqk4ppaQiMAgBMB2JYwCdMoAC/Bv44fPL9GYx4AD+7t7+aRGwmulgDgE87WSVA7c1mnMEvCPd+QoJA7Z73r40+uxaSay3nWcxMl1cdrAAAA==');
   }
@@ -342,7 +323,7 @@
   inset: auto 0 0;
   z-index: 1;
   display: grid;
-  padding: 18px 22px 22px;
+  padding: clamp(14px, 1.5vw, 18px) clamp(16px, 1.8vw, 22px) clamp(16px, 1.8vw, 22px);
   border-radius: 16px 16px 0 0;
   transition:
     background-color 0.6s var(--hub-ease-soft),
@@ -375,7 +356,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 8px 20px;
-  margin-top: 22px;
+  margin-top: 12px;
   color: var(--hub-accent);
   font-size: 0.75rem;
   font-weight: 600;
@@ -396,7 +377,7 @@
 
 .hub-case__desc {
   max-width: 52ch;
-  padding-top: 16px;
+  padding-top: 10px;
   color: rgb(243 238 247 / 88%);
   font-size: 0.9375rem;
   line-height: 1.55;
@@ -405,7 +386,7 @@
 .hub-case__open {
   position: absolute;
   isolation: isolate;
-  bottom: calc(100% + clamp(14px, 3.4vw, 52px));
+  bottom: calc(100% + clamp(10px, 2.2vw, 36px));
   left: 50%;
   z-index: 2;
   display: inline-flex;
@@ -561,6 +542,49 @@
     grid-column: 2;
     grid-row: 2;
     text-align: right;
+  }
+}
+
+@media (max-width: 1100px) {
+  .hub-case__meta {
+    gap: 6px 14px;
+    font-size: 0.6875rem;
+    letter-spacing: 0.04em;
+  }
+
+  .hub-case__meta-item {
+    gap: 6px;
+  }
+
+  .hub-case__meta-icon {
+    width: 14px;
+    height: 14px;
+  }
+
+  .hub-case__desc {
+    display: -webkit-box;
+    overflow: hidden;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+  }
+
+  .hub-case__open {
+    gap: 6px;
+    padding: 0.7em 1.2em;
+    font-size: 0.75rem;
+  }
+
+  .hub-case__open-icon {
+    width: 14px;
+    height: 14px;
+  }
+}
+
+@media (min-width: 700px) and (max-width: 860px) {
+  .hub-case__desc {
+    display: none;
   }
 }
 
