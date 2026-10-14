@@ -1,0 +1,227 @@
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  font-display: fallback;
+  src: url('../fonts/montserrat-400.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 600;
+  font-display: fallback;
+  src: url('../fonts/montserrat-600.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Nanum Pen Script';
+  font-style: normal;
+  font-weight: 400;
+  font-display: block;
+  src: url('../fonts/nanum-pen-script-400.woff2') format('woff2');
+}
+
+:root {
+  --hub-plum: #4c2365;
+  --hub-violet: #7f5d99;
+  --hub-lilac: #9e7eb5;
+  --hub-lavender: #c4a4da;
+
+  --hub-bg: #0d0811;
+  --hub-bg-raised: #150d1b;
+  --hub-glass: rgb(196 164 218 / 6%);
+  --hub-glass-strong: rgb(196 164 218 / 10%);
+  --hub-line: rgb(196 164 218 / 18%);
+  --hub-text: #f3eef7;
+  --hub-text-dim: rgb(243 238 247 / 62%);
+  --hub-accent: var(--hub-lavender);
+
+  --hub-font: 'Montserrat', system-ui, sans-serif;
+  --hub-font-script: 'Nanum Pen Script', cursive;
+  --hub-fz-display: clamp(2.4rem, 5.2vw, 4.4rem);
+  --hub-fz-h2: clamp(1.9rem, 3.6vw, 3rem);
+  --hub-fz-h3: 1.25rem;
+  --hub-fz-body: 1rem;
+  --hub-fz-small: 0.875rem;
+
+  --hub-radius: 18px;
+  --hub-radius-sm: 10px;
+  --hub-wrap: 1240px;
+  --hub-gutter: clamp(16px, 4vw, 40px);
+  --hub-sec-y: clamp(64px, 9vw, 120px);
+
+  --hub-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --hub-ease-soft: cubic-bezier(0.33, 1, 0.68, 1);
+  --hub-t: 0.3s;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scrollbar-color: var(--hub-violet) var(--hub-bg);
+  scrollbar-width: thin;
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--hub-bg);
+  color: var(--hub-text);
+  font-family: var(--hub-font);
+  font-size: var(--hub-fz-body);
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+h1,
+h2,
+h3,
+p,
+ul,
+figure {
+  margin: 0;
+}
+
+ul[class] {
+  padding: 0;
+  list-style: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 2px solid var(--hub-lavender);
+  outline-offset: 3px;
+}
+
+.hub-btn {
+  position: relative;
+  isolation: isolate;
+  display: inline-block;
+  padding: 1em 2.5em;
+  border: 1px solid transparent;
+  border-radius: 6em;
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    transform 0.5s var(--hub-ease-soft),
+    box-shadow 0.5s var(--hub-ease-soft),
+    background-color 0.5s var(--hub-ease-soft),
+    border-color 0.5s var(--hub-ease-soft);
+}
+
+.hub-btn::after {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  z-index: -1;
+  border-radius: inherit;
+  transition:
+    transform 0.9s var(--hub-ease-soft),
+    opacity 0.9s var(--hub-ease-soft);
+}
+
+.hub-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 24px rgb(76 35 101 / 55%);
+}
+
+.hub-btn:hover::after {
+  transform: scaleX(1.4) scaleY(1.6);
+  opacity: 0;
+}
+
+.hub-btn:active {
+  transform: translateY(-1px);
+  box-shadow: 0 5px 12px rgb(76 35 101 / 55%);
+}
+
+.hub-btn--solid {
+  background-color: var(--hub-lavender);
+  color: var(--hub-bg);
+}
+
+.hub-btn--solid::after {
+  background-color: var(--hub-lavender);
+}
+
+.hub-btn--solid:hover {
+  background-color: #d3bce3;
+}
+
+.hub-btn--ghost {
+  border-color: var(--hub-lilac);
+  background-color: transparent;
+  color: var(--hub-text);
+}
+
+.hub-btn--ghost::after {
+  border: 1px solid var(--hub-lavender);
+}
+
+.hub-btn--ghost:hover {
+  border-color: var(--hub-lavender);
+  background-color: rgb(196 164 218 / 10%);
+}
+
+@supports not (scrollbar-color: auto) {
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background-color: var(--hub-bg);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    border: 2px solid var(--hub-bg);
+    border-radius: 10px;
+    background-color: var(--hub-violet);
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: var(--hub-lilac);
+  }
+}
+
+@media (max-width: 700px) {
+  .hub-btn {
+    padding: 0.85em 1.8em;
+    font-size: 0.875rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
